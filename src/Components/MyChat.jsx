@@ -29,17 +29,17 @@ const MyChat = ({ fetchAgain }) => {
       };
 
       const { data } = await axios.get(
-        "http://localhost:8383/api/chat/fetchchat",
+        "https://chat-app-backend-3x8q.onrender.com/api/chat/fetchchat",
         config
       );
 
       setChats(data);
-
+      console.log(data);
       //
     } catch (error) {
       toast({
         title: "Error Occured!",
-        description: "Failed to Load the chats",
+        description: error,
         status: "error",
         duration: 5000,
         isClosable: true,

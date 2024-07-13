@@ -4,8 +4,6 @@ import LoginUser from "./Pages/LoginUser";
 import RegisterUser from "./Pages/RegisterUser";
 import Chat from "./Pages/Chat";
 
-//import Home from "./Pages/Home";
-
 const App = () => {
   return (
     <div>
