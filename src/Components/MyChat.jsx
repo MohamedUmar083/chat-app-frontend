@@ -34,7 +34,7 @@ const MyChat = ({ fetchAgain }) => {
       );
 
       setChats(data);
-      console.log(data);
+      //console.log(data)
       //
     } catch (error) {
       toast({
