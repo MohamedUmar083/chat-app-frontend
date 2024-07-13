@@ -39,7 +39,11 @@ const LoginUser = () => {
     try {
       e.preventDefault();
       await axios
-        .post("http://localhost:8383/api/user/login-user", payload, config)
+        .post(
+          "https://chat-app-backend-3x8q.onrender.com/api/user/login-user",
+          payload,
+          config
+        )
         .then((res) => {
           const user = res.data.data;
 

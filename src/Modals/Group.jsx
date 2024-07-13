@@ -44,7 +44,7 @@ const Group = ({ children }) => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:8383/api/user/get-user?search=${search}`,
+        `https://chat-app-backend-3x8q.onrender.com/api/user/get-user?search=${search}`,
         config
       );
       console.log(data);
@@ -81,7 +81,7 @@ const Group = ({ children }) => {
       };
       await axios
         .post(
-          "http://localhost:8383/api/chat/group",
+          "https://chat-app-backend-3x8q.onrender.com/api/chat/group",
           {
             name: groupChatName,
             users: JSON.stringify(selectedUsers.map((u) => u._id)),

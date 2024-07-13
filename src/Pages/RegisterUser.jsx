@@ -25,7 +25,10 @@ const RegisterUser = () => {
     try {
       e.preventDefault();
       await axios
-        .post("http://localhost:8383/api/user/register-user", payload)
+        .post(
+          "https://chat-app-backend-3x8q.onrender.com/api/user/register-user",
+          payload
+        )
         .then((res) => {
           res.data.data;
           toast({

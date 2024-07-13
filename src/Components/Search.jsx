@@ -67,11 +67,14 @@ const Search = () => {
     try {
       setLoading(true);
       await axios
-        .get(`http://localhost:8383/api/user/get-user?search=${search}`, {
-          headers: {
-            Authorization: user.token,
-          },
-        })
+        .get(
+          `https://chat-app-backend-3x8q.onrender.com/api/user/get-user?search=${search}`,
+          {
+            headers: {
+              Authorization: user.token,
+            },
+          }
+        )
         .then((res) => {
           setLoading(false);
           //console.log(res.data);
@@ -128,7 +131,7 @@ const Search = () => {
         },
       };
       const { data } = await axios.post(
-        "http://localhost:8383/api/chat/accesschat",
+        "https://chat-app-backend-3x8q.onrender.com/api/chat/accesschat",
         { userID },
         config
       );

@@ -55,7 +55,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       };
       await axios
         .put(
-          "http://localhost:8383/api/chat/removemember",
+          "https://chat-app-backend-3x8q.onrender.com/api/chat/removemember",
           {
             chatId: selectedChat._id,
             userId: users._id,
@@ -116,7 +116,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       };
       await axios
         .put(
-          "http://localhost:8383/api/chat/addmember",
+          "https://chat-app-backend-3x8q.onrender.com/api/chat/addmember",
           {
             chatId: selectedChat._id,
             userId: users._id,
@@ -153,7 +153,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
       };
       await axios
         .put(
-          "http://localhost:8383/api/chat/rename",
+          "https://chat-app-backend-3x8q.onrender.com/api/chat/rename",
           {
             chatId: selectedChat._id,
             chatName: groupChatName,
@@ -197,7 +197,7 @@ const UpdateGroup = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
         },
       };
       const { data } = await axios.get(
-        `http://localhost:8383/api/user/get-user?search=${search}`,
+        `https://chat-app-backend-3x8q.onrender.com/api/user/get-user?search=${search}`,
         config
       );
       console.log(data);
