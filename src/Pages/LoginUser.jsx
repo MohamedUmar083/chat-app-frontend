@@ -58,7 +58,16 @@ const LoginUser = () => {
           });
           navigate("/chats");
         })
-        .catch((err) => console.log(err));
+        .catch((err) =>
+          toast({
+            title: "Invalid Password!",
+
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          })
+        );
     } catch (error) {
       toast({
         title: "Error Occured!",
