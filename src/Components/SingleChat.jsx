@@ -49,7 +49,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         `https://chat-app-backend-3x8q.onrender.com/api/message/${selectedChat._id}`,
         config
       );
-      console.log(messages);
+      //console.log(messages);
       setMessages(data);
       setLoading(false);
 
