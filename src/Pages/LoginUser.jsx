@@ -7,8 +7,6 @@ import axios from "axios";
 import { ChatState } from "../Provider/ChatProvider";
 
 const LoginUser = () => {
-  const [email, SetEmail] = useState("");
-  const [password, SetPassword] = useState("");
   const navigate = useNavigate();
   const { setUser } = ChatState();
   const toast = useToast();

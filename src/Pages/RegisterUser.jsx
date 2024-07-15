@@ -6,9 +6,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const RegisterUser = () => {
-  const [username, SetUsername] = useState("");
-  const [email, SetEmail] = useState("");
-  const [password, SetPassword] = useState("");
   const toast = useToast();
   const navigate = useNavigate();
 
