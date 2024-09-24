@@ -4,6 +4,13 @@
   font-family: "PT Serif", serif;
 }
 
-#root {
+.homepage {
   min-height: 100vh;
+  background-image: url("https://s.tmimgcdn.com/scr/1200x750/124800/paysage-de-coucher-de-soleil-sur-la-riviere-illustration_124817-original.jpg"); /* Set your background image */
+  background-size: 100% 100%; /* Make the image cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  width: 100%; /* Set the width to full */
+
+  display: flex;
 }
