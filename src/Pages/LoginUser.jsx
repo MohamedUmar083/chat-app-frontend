@@ -135,15 +135,6 @@ const LoginUser = () => {
                     Join
                   </button>
                 </div>
-                <div className="d-grid gap-2 col-8 mx-auto">
-                  <p className="text-center">
-                    New User ?{" "}
-                    <ChakraLink as={Link} to="/register" color="blue">
-                      SignUp
-                    </ChakraLink>
-                    {/* New User ? <Link to="/register"> SignUp</Link> */}
-                  </p>
-                </div>
               </div>
             </div>
           </form>

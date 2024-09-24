@@ -156,14 +156,6 @@ const RegisterUser = () => {
                     Register
                   </button>
                 </div>
-                <div className="d-grid gap-2 col-8 mx-auto">
-                  <p className="text-center">
-                    Already have account?{" "}
-                    <ChakraLink as={Link} to="/" color="blue">
-                      Login
-                    </ChakraLink>
-                  </p>
-                </div>
               </div>
             </div>
           </form>
