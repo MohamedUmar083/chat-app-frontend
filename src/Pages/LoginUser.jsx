@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Link as ChakraLink, useToast } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+  InputGroup,
+  InputRightElement,
+  useToast,
+  VStack,
+} from "@chakra-ui/react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { ChatState } from "../Provider/ChatProvider";
 
 const LoginUser = () => {
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
   const navigate = useNavigate();
   const { setUser } = ChatState();
   const toast = useToast();
@@ -28,7 +40,7 @@ const LoginUser = () => {
     password: Yup.string()
       .matches(
         /^[a-zA-Z0-9!@#$%^&*()_+]{8,16}$/,
-        "Password Should be in 8 - 16 characters)"
+        "Password Should be in 8 - 16 characters"
       )
       .required("Password Should not be Empty"),
   });
@@ -68,9 +80,10 @@ const LoginUser = () => {
             navigate("/chats");
           })
           .catch((err) => {
+            console.log(err.response.data.message);
             toast({
-              title: "Error Occured!",
-              description: err.response.data.message,
+              title: "Invalid Password!",
+
               status: "error",
               duration: 5000,
               isClosable: true,
@@ -91,56 +104,64 @@ const LoginUser = () => {
   });
 
   return (
-    <div>
-      <div className="container login mt-3 ">
-        <div className="card  border-white ">
-          <div className="card-header text-center border-white">
-            <h4>Log-in</h4>
-          </div>
-          <form onSubmit={formik.handleSubmit}>
-            <div className="row d-flex justify-content-center align-items-center">
-              <div className="col-12 col-md-6 mb-3">
-                <label htmlFor="floatingInput" className="form-label">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  autoComplete="off"
-                  className="form-control mb-3"
-                  id="floatingInput"
-                  placeholder="Enter your Email"
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
-                  required
-                />
-                <p className="text-danger">{formik.errors.email}</p>
-                <label htmlFor="floatingInput" className="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  autoComplete="off"
-                  className="form-control mb-3"
-                  id="floatingInput"
-                  placeholder="Enter your Password"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  required
-                />
-                <p className="text-danger">{formik.errors.password}</p>
-                <div className="d-grid gap-2 col-6 mx-auto">
-                  <button type="submit" className="btn btn-success w-100 mb-3">
-                    Join
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    <>
+      <form onSubmit={formik.handleSubmit}>
+        <VStack spacing="5px">
+          <FormControl
+            id="email"
+            isRequired
+            isInvalid={formik.errors.email && formik.touched.email}
+            mb="4"
+          >
+            <FormLabel>Email</FormLabel>
+            <Input
+              name="email"
+              placeholder="Enter your Email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              autoComplete="off"
+            />
+            <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+          </FormControl>
+          <FormControl
+            id="password"
+            isRequired
+            isInvalid={formik.errors.password && formik.touched.password}
+            mb="4"
+          >
+            <FormLabel>Password</FormLabel>
+            <InputGroup size="md">
+              <Input
+                name="password"
+                type={show ? "text" : "password"}
+                placeholder="Enter your Password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                autoComplete="off"
+              />
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
+
+            <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+          </FormControl>
+          <Button
+            colorScheme="green"
+            width="100%"
+            style={{ marginTop: 15 }}
+            type="submit"
+            isLoading={formik.isSubmitting}
+          >
+            Login
+          </Button>
+        </VStack>
+      </form>
+    </>
   );
 };
 
